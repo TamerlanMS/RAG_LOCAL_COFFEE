@@ -101,9 +101,7 @@ def create_order(
 
     template = (
         f"Ваш Заказ: "
-        f"Город: {location_address}\n"
-        f"Номер WhatsApp: {location_phone}\n"
-        f"Адрес доставки: {location_address if total < 15000 else delivery_address}\n"
+        f"Адрес доставки: {location_address}\n"
         f"Имя клиента: {client_name}\n"
         f"Номер клиента: {client_number}\n"
         f"Метод оплаты: {payment}\n\n"
@@ -159,3 +157,4 @@ graph.add_conditional_edges(
 graph.add_edge("tools", "agent")
 
 agent = graph.compile(checkpointer=InMemorySaver(), debug=True)
+
