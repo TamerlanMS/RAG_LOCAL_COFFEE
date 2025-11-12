@@ -24,7 +24,7 @@ class ProductSchema(BaseModel):
 
 
 class LocationProductSchema(BaseModel):
-    """Модель товара в конкретной аптеке"""
+    """Модель товара в конкретном месте"""
 
     product: ProductSchema
     location: LocationSchema
@@ -60,7 +60,6 @@ class Order(BaseModel):
     """Модель заказа."""
 
     delivery_address: str = Field(description="Адрес доставки или самовывоз")
-    location_phone: str = Field(description="Телефон менеджера")
     client_name: str = Field(description="Имя клиента")
     client_number: str = Field(description="Номер клиента")
     payment: str = Field(description="Метод оплаты, например наличные или kaspi")
@@ -68,10 +67,10 @@ class Order(BaseModel):
 
     def __repr__(self) -> str:
         return (
-            f"<Order({self.location_phone=}, "
-            f"{self.delivery_address=}, "
+            f"<Order({self.delivery_address=}, "
             f"{self.client_name=}), "
             f"{self.client_number=}, "
             f"{self.payment=}, "
             f"{self.items=}>"
         )
+
